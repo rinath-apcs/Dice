@@ -3,8 +3,13 @@ ArrayList<Die> dice = new ArrayList();
 void setup() {
 	noLoop();
 
-	size(200, 200);
-	dice.add(new Die(100, 100, 20));
+	size(500, 500);
+
+	for (int y = 0; y < 9; y++) {
+		for (int x = 0; x < 9; x++) {
+			dice.add(new Die(50+50*x, 50+50*y, 20));
+		}
+	}
 }
 
 void draw() {
@@ -19,11 +24,12 @@ void mousePressed() {
 }
 
 class Die {
-	int x, y, num, radius;
+	float x, y;
+	int num, radius;
 	
 	public Die(int x, int y, int radius) {
-		this.x = x;
-		this.y = y;
+		this.x = x - radius;
+		this.y = y - radius;
 		this.radius = radius;
 
 		roll();
@@ -31,7 +37,6 @@ class Die {
 
 	private void roll() {
 		num = (int) (Math.random() * 6 + 1);
-		println(num);
 	}
 
 	public void show() {
@@ -82,3 +87,4 @@ class Die {
 		ellipse(x + radius * xPos / 2.0, y + radius * yPos / 2.0, radius / 2.5, radius / 2.5);
 	}
 }
+

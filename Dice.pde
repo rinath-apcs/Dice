@@ -1,9 +1,11 @@
 ArrayList<Die> dice = new ArrayList();
+int sum;
 
 void setup() {
 	noLoop();
-
-	size(500, 500);
+	size(500, 600);
+	textSize(32);
+	textAlign(CENTER);
 
 	for (int y = 0; y < 9; y++) {
 		for (int x = 0; x < 9; x++) {
@@ -13,10 +15,12 @@ void setup() {
 }
 
 void draw() {
+	background(177);
+	sum = 0;
 	for (Die die : dice) {
-		die.show();
+		sum += die.tick();
 	}
-
+	text(sum, 250, 550);
 }
 
 void mousePressed() {
@@ -39,7 +43,7 @@ class Die {
 		num = (int) (Math.random() * 6 + 1);
 	}
 
-	public void show() {
+	private void show() {
 		roll();
 
 		fill(255);
@@ -85,6 +89,11 @@ class Die {
 
 	private void dot(int xPos, int yPos) {
 		ellipse(x + radius * xPos / 2.0, y + radius * yPos / 2.0, radius / 2.5, radius / 2.5);
+	}
+
+	public int tick() {
+		show();
+		return num;
 	}
 }
 

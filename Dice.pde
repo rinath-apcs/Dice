@@ -46,43 +46,29 @@ class Die {
 	private void show() {
 		roll();
 
-		fill(255);
-		rect(x, y, radius * 2, radius * 2);
+		fill(255 - num * 10, 195 + num * 10, 195 + num * 10);
+		rect(x, y, radius * 2, radius * 2, radius / 2.0);
 
 		fill(0);
 		switch(num) {
-			case 1:
-				dot(2,2);
-				break;
-			case 2:
-				dot(1,3);
-				dot(3,1);
-				break;
+			case 5:
+				dot(3,3);
+				dot(1,1);
 			case 3:
 				dot(1,3);
 				dot(3,1);
+			case 1:
 				dot(2,2);
-				break;
-			case 4:
-				dot(1,1);
-				dot(3,1);
-				dot(3,3);
-				dot(1,3);
-				break;
-			case 5:
-				dot(2,2);
-				dot(1,1);
-				dot(3,1);
-				dot(3,3);
-				dot(1,3);
 				break;
 			case 6:
-				dot(1,1);
-				dot(3,1);
-				dot(3,3);
-				dot(1,3);
 				dot(1,2);
 				dot(3,2);
+			case 4:
+				dot(3,3);
+				dot(1,1);
+			case 2:
+				dot(1,3);
+				dot(3,1);
 				break;
 		}
 	}
